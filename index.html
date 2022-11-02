@@ -28,7 +28,6 @@
   </div>
 
   <script>
-
     const links = document.querySelectorAll("a");
 
     const highlight = document.createElement("span"); // create span with a class of highlight
@@ -37,9 +36,15 @@
 
     document.body.append(highlight); // put it into the DOM
 
-    function highlightLink(){
+    function highlightLink() {
       const linkCoords = this.getBoundingClientRect(); // return DOMRect object for each hovered link
-      console.log(linkCoords);
+
+      highlight.style.width = `${linkCoords.width}px`;
+
+      highlight.style.height = `${linkCoords.height}px`;
+
+      highlight.style.transform = `translate(${linkCoords.left}px, ${linkCoords.top}px)`;
+
     }
 
     links.forEach(link => link.addEventListener("mouseenter", highlightLink));
